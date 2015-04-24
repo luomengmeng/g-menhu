@@ -1,0 +1,58 @@
+<!-- Navigation -->
+    <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">网贷门户</a>
+        </div>
+        <!-- /.navbar-header -->
+
+        <ul class="nav navbar-top-links navbar-right">
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                    <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
+                </a>
+                <ul class="dropdown-menu dropdown-user">
+                    <li><a href="<%= backend_users_path %>"><i class="fa fa-user fa-fw"></i> User Profile</a>
+                    </li>
+                    <li class="divider"></li>
+                    <li><a href="<%=  destroy_user_session_path %>" data-method="delete"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                    </li>
+                </ul>
+                <!-- /.dropdown-user -->
+            </li>
+            <!-- /.dropdown -->
+        </ul>
+        <!-- /.navbar-top-links -->
+
+        <div class="navbar-default sidebar" role="navigation">
+            <div class="sidebar-nav navbar-collapse">
+                <ul class="nav" id="side-menu">
+                    <li class='<%= controller_name == 'dashboard' ? 'active' : '' %>'>
+                        <a href="/" class="<%= controller_name == 'dashboard' ? 'active' : '' %>"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+                    </li>
+                    <li class="<%= 'active' if controller_name == 'download_records' %>">
+                        <a class="<%= 'active' if controller_name == 'download_records' %>" href="<%= backend_download_records_path %>"><i class="fa fa-list-alt fa-fw"></i> Download Records</a>
+                    </li>
+                    <li class="<%= 'active' if controller_name == 'sites' || controller_name == 'noises' %>">
+                        <a href="#"><i class="fa fa-gear fa-fw"></i> System Settings<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level <%= 'in' if controller_name == 'sites' || controller_name == 'noises' %>">
+                            <li>
+                                <%= link_to 'Sites', backend_sites_path, :class => "#{'active' if controller_name == 'sites'}" %>
+                            </li>
+                            <li>
+                                <%= link_to 'Noises', backend_noises_path, :class => "#{'active' if controller_name == 'noises'}" %>
+                            </li>
+                        </ul>
+                        <!-- /.nav-second-level -->
+                    </li>
+                </ul>
+            </div>
+            <!-- /.sidebar-collapse -->
+        </div>
+        <!-- /.navbar-static-side -->
+    </nav>

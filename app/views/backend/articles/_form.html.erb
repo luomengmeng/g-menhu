@@ -1,0 +1,52 @@
+<div class="col-lg-6">
+    <form role="form">
+        <div class="form-group">
+            <label>文章标题</label>
+            <%= f.text_field :title, :class => "form-control" ,:placeholder =>  "Enter title" %>
+        </div>
+        <div class="form-group">
+            <label>文章类别</label>
+            <%= f.select :categories_id, Category.all.collect { |p| [p.name, p.id]  } ,{},{:class => "form-control"} %>
+        </div>
+        <div class="form-group">
+            <label>是否显示</label>
+            <div class="radio">
+            <label>
+                <%= f.radio_button :status , "1", :checked => 'checked' %>是
+            </label>
+            </div>
+            <div class="radio">
+            <label>
+                <%= f.radio_button :status ,"2", :value => '2' %>否
+            </label>
+            </div>
+        </div>
+<div class="form-group">
+    <label>是否在首页显示</label>
+    <div class="radio">
+        <label>
+            <%= f.radio_button :home , true, :checked => 'checked' %>是
+        </label>
+    </div>
+    <div class="radio">
+        <label>
+            <%= f.radio_button :home ,false %>否
+        </label>
+    </div>
+</div>
+        <div class="form-group">
+            <label>文章图片</label>
+            <input type="file" name="banner[pic]" id="banner_pic">
+        </div>
+        <div class="form-group">
+            <label>文章摘要</label>
+            <%= f.text_area :abstact, :cols => 40, :rows => 3, :class => "form-control", :placeholder => "Enter abstact" %>
+        </div>
+        <div class="form-group">
+            <label>文章内容</label>
+            <%= f.text_area :content, :cols => 40, :rows => 5, :class => "form-control", :placeholder => "Enter content" %>
+        </div>
+        <button type="submit" class="btn btn-default">Submit Button</button>
+        <button type="reset" class="btn btn-default">Reset Button</button>
+    </form>
+</div>
