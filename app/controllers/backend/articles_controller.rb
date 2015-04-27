@@ -1,9 +1,7 @@
 class Backend::ArticlesController < Backend::BaseController
 def index
     @title = '文章列表'
-    @articles = Article.order("created_at desc").all
-    # @articles = Category.joins(:articles)
-
+    @articles = Article.find_by_sql("SELECT a.*,c.name FROM articles as a INNER JOIN categories as c ON c.id = a.categories_id order by created_at desc")
 end
 
 def new

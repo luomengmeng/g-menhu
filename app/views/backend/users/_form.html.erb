@@ -1,0 +1,22 @@
+<div class="col-lg-6">
+    <form role="form">
+        <div class="form-group">
+            <label>用户昵称</label>
+            <%= f.text_field :nickname, :class => "form-control" ,:placeholder =>  "Enter title"%>
+        </div>
+        <div class="form-group">
+            <label>真实姓名</label>
+            <%= f.text_field :name, :class => "form-control" ,:placeholder =>  "Enter title"%>
+        </div>
+        <div class="form-group">
+            <label>用户状态</label>
+            <%= f.select :status , [["启用","1"],["暂停","2"]], {} ,class: "form-control" %>
+        </div>
+        <div class="form-group">
+            <label>用户类别</label>
+            <%= f.select :account_type , [["前台用户","1"],["后台用户","2"]], {} ,class: "form-control" %>
+        </div>
+        <button type="submit" class="btn btn-default">Submit Button</button>
+        <button type="reset" class="btn btn-default">Reset Button</button>
+    </form>
+</div>

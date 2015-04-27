@@ -7,7 +7,11 @@ Rails.application.routes.draw do
   end
 
   namespace :backend do
-    resources :admins, :articles, :categories
+    resources :admins, :articles, :categories, :users, :login
   end
+
+resources :login
+ get 'login', to: 'login#login'
+
 
 end
