@@ -1,17 +1,25 @@
 Rails.application.routes.draw do
-  root 'frontend/home#index'
-  namespace :frontend do
+  # mount Ckeditor::Engine => "/ckeditor"
+
+    root 'frontend/home#index'
+    namespace :frontend do
     resource :home do
         get :index
     end
-  end
+    end
 
-  namespace :backend do
+    namespace :backend do
     resources :admins, :articles, :categories, :users, :login
-  end
+    end
 
-resources :login
- get 'login', to: 'login#login'
+    # resources :login
+    # get 'login', to: 'login#login'
+
+    get    'login'   => 'session#new'
+    get 'logout'  => 'session#destroy'
+    post   'login'   => 'session#create'
+    delete 'logout'  => 'session#destroy'
+    resources :users
 
 
 end

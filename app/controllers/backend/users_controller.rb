@@ -44,6 +44,6 @@ end
 
 private
     def users_params
-      params.require(:user).permit(:nickname, :name, :status, :account_type)
+      params.require(:user).permit(:nickname, :name, :status, :account_type, :password)
     end
 end
