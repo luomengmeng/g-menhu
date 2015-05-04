@@ -55,5 +55,8 @@ group :development, :test do
   #注册、登录功能
   gem 'devise'
 
+  #page
+gem 'will_paginate', '~> 3.0.4'
+
 end
 

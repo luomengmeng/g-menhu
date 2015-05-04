@@ -9,7 +9,7 @@
 
             <div class="panel-body">
                 <div class="row">
-                <%= form_for @categorys, :url => backend_categories_path, :html => {:multipart => true} do |f| %>
+                <%= form_for @categories, :url => backend_categories_path, :html => {:multipart => true} do |f| %>
                     <%= render  :partial => "form", :locals => {:f => f} %>
                 <% end %>
                     <!-- /.col-lg-6 (nested) -->

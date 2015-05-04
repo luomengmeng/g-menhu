@@ -9,16 +9,16 @@ Rails.application.routes.draw do
     end
 
     namespace :backend do
-    resources :admins, :articles, :categories, :users, :login
+    resources :admins, :articles, :categories, :users, :login, :navigations, :provinces
     end
 
     # resources :login
     # get 'login', to: 'login#login'
 
-    get    'login'   => 'session#new'
-    get 'logout'  => 'session#destroy'
-    post   'login'   => 'session#create'
-    delete 'logout'  => 'session#destroy'
+    get        'login'   => 'session#new'
+    get        'logout'  => 'session#destroy'
+    post      'login'   => 'session#create'
+    delete   'logout'  => 'session#destroy'
     resources :users
 
 

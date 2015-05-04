@@ -1,7 +1,7 @@
 class Backend::ArticlesController < Backend::BaseController
 def index
     @title = '文章列表'
-    @articles = Article.find_by_sql("SELECT a.*,c.name FROM articles as a INNER JOIN categories as c ON c.id = a.categories_id order by created_at desc")
+    @articles = Article.order("created_at desc").all.paginate(page:params[:page],per_page:8) 
 end
 
 def new
@@ -45,6 +45,6 @@ end
 
 private
     def articles_params
-      params.require(:article).permit(:title,:abstact, :content,:status,:home, :categories_id)
+      params.require(:article).permit(:title,:abstact, :content,:status,:home, :category_id)
     end
 end

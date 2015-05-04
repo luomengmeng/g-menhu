@@ -1,17 +1,17 @@
 class Backend::CategoriesController < Backend::BaseController
 def index
     @title = '类别列表'
-    @categorys = Categories.order("created_at desc").all
+    @categories = Category.order("created_at desc").all.paginate(page:params[:page],per_page:8)
 end
 
 def new
     @title = '添加类别'
-    @categorys = Categories.new
+    @categories = Category.new
 end
 
 def create
-    @categorys = Categories.new(category_params)
-    if @categorys.save
+    @categories = Category.new(category_params)
+    if @categories.save
       flash[:success] = '添加成功'
       redirect_to backend_categories_path
     else
@@ -21,11 +21,11 @@ def create
 end
 
 def edit
-    @category = Categories.find(params[:id])
+    @category = Category.find(params[:id])
 end
 
 def update
-    category = Categories.find(params[:id])
+    category = Category.find(params[:id])
     respond_to do |format|
       if category.update_attributes(category_params)
         format.html { redirect_to backend_categories_path, notice: '更新成功' }
@@ -38,13 +38,13 @@ def update
 end
 
 def destroy
-    category = Categories.find(params[:id])
+    category = Category.find(params[:id])
     category.destroy
     redirect_to backend_categories_path
 end 
 
 private
     def category_params
-      params.require(:categories).permit(:name)
+      params.require(:category).permit(:name)
     end
 end

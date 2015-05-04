@@ -1,11 +1,59 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  title: MyString
-  url: MyString
-  online_date: MyString
+  name: MyString
+  name_url: MyString
+  province_id: 1
+  abstract: MyString
+  area: MyString
+  online_time: MyString
+  registered_capital: MyString
+  average_income: MyString
+  with_income: MyString
+  investment_period: MyString
+  auto_bidding: 1
+  creditor: MyString
+  trust_funds: MyString
+  tender_guarantee: MyString
+  security_mode: MyString
+  guarantee_agency: MyString
+  management_fee: MyString
+  prepaid_fee: MyString
+  withdrawal_fee: MyString
+  vip_fee: MyString
+  transfer_fee: MyString
+  method_payment: MyString
+  address: MyString
+  free_phone: MyString
+  phone: MyString
+  fax: MyString
+  mail: MyString
 
 two:
-  title: MyString
-  url: MyString
-  online_date: MyString
+  name: MyString
+  name_url: MyString
+  province_id: 1
+  abstract: MyString
+  area: MyString
+  online_time: MyString
+  registered_capital: MyString
+  average_income: MyString
+  with_income: MyString
+  investment_period: MyString
+  auto_bidding: 1
+  creditor: MyString
+  trust_funds: MyString
+  tender_guarantee: MyString
+  security_mode: MyString
+  guarantee_agency: MyString
+  management_fee: MyString
+  prepaid_fee: MyString
+  withdrawal_fee: MyString
+  vip_fee: MyString
+  transfer_fee: MyString
+  method_payment: MyString
+  address: MyString
+  free_phone: MyString
+  phone: MyString
+  fax: MyString
+  mail: MyString
