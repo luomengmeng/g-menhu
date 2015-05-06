@@ -1,7 +1,7 @@
 class Backend::ProvincesController < Backend::BaseController
 def index
     @title = '类别列表'
-    @provinces = Province.order("created_at desc").all.paginate(page:params[:page],per_page:38)
+    @provinces = Province.order("created_at desc").all.paginate(page:params[:page],per_page:12)
 end
 
 def new

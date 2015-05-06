@@ -9,6 +9,10 @@
             <%= f.password_field :password, :class => "form-control" ,:placeholder =>  "Enter password" , :error => 'is' %>
         </div>
         <div class="form-group">
+            <label>确认密码</label>
+            <%= f.password_field :confirm_password, :class => "form-control" ,:placeholder =>  "Enter confirm_password" , :error => 'is' %>
+        </div>
+        <div class="form-group">
             <label>真实姓名</label>
             <%= f.text_field :name, :class => "form-control" ,:placeholder =>  "Enter name" , :error => 'is' %>
         </div>
@@ -48,6 +52,15 @@ $(function(){
                    if( this.value=="" || ( this.value!="" && !/^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{8,16}$/.test(this.value)) ){
                     $(this).parent().removeClass().addClass("form-group has-error");
                        var errorMsg = '用户密码不能为空且不可少于六位字符和数字';
+                       $parent.append('<span class="formtips onError" style="color: red;font-size: 12px;">'+errorMsg+'</span>');
+                   }else{
+                       $(this).parent().removeClass().addClass("form-group has-success");
+                   }
+            }
+            if( $(this).is('#user_confirm_password') ){
+                   if( this.value != $("#user_password").val()){
+                    $(this).parent().removeClass().addClass("form-group has-error");
+                       var errorMsg = '请输入相同的密码';
                        $parent.append('<span class="formtips onError" style="color: red;font-size: 12px;">'+errorMsg+'</span>');
                    }else{
                        $(this).parent().removeClass().addClass("form-group has-success");

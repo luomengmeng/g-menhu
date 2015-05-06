@@ -1,4 +1,4 @@
-class Backend::AdminsController < ApplicationController
+class Backend::AdminsController < Backend::BaseController
   def index
   end
 end

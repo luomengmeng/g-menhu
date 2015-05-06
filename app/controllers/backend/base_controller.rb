@@ -1,7 +1,6 @@
 class Backend::BaseController < ApplicationController
-
-
-layout 'backend'
+  before_action :auth?
+    layout 'backend'
 
 def init_breadcrumb(options = {})
   drop_breadcrumb params[:controller] , url_for(:controller => params[:controller])
@@ -17,4 +16,11 @@ private
 def verify_admin
     redirect_to root_url unless current_user.roles.is_admin.present?
 end
+  def auth?
+    if cookies[:user_name] == "menhu"
+
+    else
+        redirect_to  login_path
+    end
+  end
 end

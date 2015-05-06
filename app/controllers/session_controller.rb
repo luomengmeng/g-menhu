@@ -1,20 +1,34 @@
 class SessionController < ApplicationController
-  def new
-    if cookies[:my_name]
-      redirect_to backend_articles_path
-    end
-  end
 
   def create
-    @user =  User.find_by_nickname(params[:session][:nickname])
-    if @user
-       cookies[:my_name] = "AAAA"
+    nickname = params[:session][:nickname]
+    password = params[:session][:password]
+    remember = params[:remember]
+    User.where("nickname = ? and password = ? and status = ? and account_type = ?", nickname , password , "1" , "2").find_each do |userinfo|
+      if userinfo.nickname == nickname
+        if remember == 'Remember'
+          cookies[:user_name] = {:value => 'menhu' , :expires => 1.weeks.from_now.utc}
+        else
+          cookies[:user_name] = 'menhu'
+        end
+      end
     end
-    redirect_to backend_articles_path
+    if cookies[:user_name] == 'menhu'
+      redirect_to backend_users_path
+    else
+      render template: "session/new"
+    end
   end
 
   def destroy
+    cookies[:user_name] = {:expires => 2.weeks.ago.utc}
+    redirect_to login_path
   end
 
+  def new
+    if cookies[:user_name] == 'menhu'
+      redirect_to backend_articles_path
+    end
+  end
 
 end

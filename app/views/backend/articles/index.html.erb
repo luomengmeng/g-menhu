@@ -1,11 +1,9 @@
-
-	<div class="row">
-	                <div class="col-lg-12">
-	                    <h2 class="page-header">文章列表</h2>
-	                    <p><a href="/backend/articles/new" class="btn btn-primary">添加文章</a></p>
-	                </div>
-	                <!-- /.col-lg-12 -->
-	</div>
+<div class="row">
+    <div class="col-lg-12">
+        <h2 class="page-header">文章列表</h2>
+        <p><a href="/backend/articles/new" class="btn btn-primary">添加文章</a></p>
+    </div>
+</div>
 <div class="col-lg-12">
     <div class="panel panel-default">
         <!-- /.panel-heading -->
@@ -29,8 +27,8 @@
                           <td><%= a.id %></td>
                           <td><%= a.title %></td>
                           <td><%=  a.category.try(:name) %></td>
-                          <td><%= (a.status)==1?"是":"否" %></td>
-                          <td><%= (a.home)?"是":"否" %></td>
+                          <td><%= (a.status) == 1 ? "是" : "否" %></td>
+                          <td><%= (a.home)  ? "是" : "否"  %></td>
                           <td><%= a.created_at.strftime('%Y-%m-%d') %></td>
                           <td>
                             <%= link_to '编辑' , edit_backend_article_path(a) %>

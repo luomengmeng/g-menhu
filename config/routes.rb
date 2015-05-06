@@ -9,7 +9,7 @@ Rails.application.routes.draw do
     end
 
     namespace :backend do
-    resources :admins, :articles, :categories, :users, :login, :navigations, :provinces
+    resources :admins, :articles, :categories, :users, :login, :navigations, :provinces, :tags
     end
 
     # resources :login

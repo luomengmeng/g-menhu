@@ -50,7 +50,7 @@ end
 
 private
     def navigation_params
-      params.require(:navigation).permit(:title, :name, :abstract, :online_time, :name_url, :province_id, :area, :registered_capital, :average_income, :investment_period, :auto_bidding, :creditor, :trust_funds, :tender_guarantee, :security_mode, :guarantee_agency, :management_fee, :prepaid_fee, :withdrawal_fee, :transfer_fee, :method_payment, :vip_fee, :address, :free_phone, :phone, :fax, :mail)
+      params.require(:navigation).permit(:with_income, :title, :name, :abstract, :online_time, :name_url, :province_id, :area, :registered_capital, :average_income, :investment_period, :auto_bidding, :creditor, :trust_funds, :tender_guarantee, :security_mode, :guarantee_agency, :management_fee, :prepaid_fee, :withdrawal_fee, :transfer_fee, :method_payment, :vip_fee, :address, :free_phone, :phone, :fax, :mail)
     end
 
 end
