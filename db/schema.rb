@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150504050105) do
+ActiveRecord::Schema.define(version: 20150508071450) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 20150504050105) do
     t.datetime "updated_at",  null: false
     t.string   "avatar"
     t.integer  "category_id"
+    t.integer  "num"
   end
 
   create_table "articles_tags", force: :cascade do |t|
@@ -51,35 +52,34 @@ ActiveRecord::Schema.define(version: 20150504050105) do
 
   create_table "navigations", force: :cascade do |t|
     t.string   "online_time"
-    t.string  "name"
-    t.string  "name_url"
+    t.string   "name"
+    t.string   "name_url"
     t.integer  "province_id"
-    t.string  "abstract"
-    t.string  "area"
-    t.string  "online_time"
-    t.string  "registered_capital"
-    t.string  "average_income"
-    t.string  "with_income"
-    t.string  "investment_period"
+    t.string   "abstract"
+    t.string   "area"
+    t.string   "registered_capital"
+    t.string   "average_income"
+    t.string   "with_income"
+    t.string   "investment_period"
     t.integer  "auto_bidding"
-    t.string  "creditor"
-    t.string  "trust_funds"
-    t.string  "tender_guarantee"
-    t.string  "security_mode"
-    t.string  "guarantee_agency"
-    t.string  "management_fee"
-    t.string  "prepaid_fee"
-    t.string  "withdrawal_fee"
-    t.string  "vip_fee"
-    t.string  "transfer_fee"
-    t.string  "method_payment"
-    t.string  "address"
-    t.string  "free_phone"
-    t.string  "phone"
-    t.string  "fax"
-    t.string  "mail"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.string   "creditor"
+    t.string   "trust_funds"
+    t.string   "tender_guarantee"
+    t.string   "security_mode"
+    t.string   "guarantee_agency"
+    t.string   "management_fee"
+    t.string   "prepaid_fee"
+    t.string   "withdrawal_fee"
+    t.string   "vip_fee"
+    t.string   "transfer_fee"
+    t.string   "method_payment"
+    t.string   "address"
+    t.string   "free_phone"
+    t.string   "phone"
+    t.string   "fax"
+    t.string   "mail"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
   end
 
   create_table "provinces", force: :cascade do |t|

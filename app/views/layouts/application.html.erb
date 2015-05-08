@@ -1,12 +1,30 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Gateway</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <title>Gateway1</title>
+  <%= stylesheet_link_tag    'backend', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+<!--导航头部-->
+<div class="main">
+    <div class="logo"><img src="<%=asset_url('i_01.png') %>"/></div>
+    <div class="logo-nav">
+        <ul>
+            <li><a href="/">首页</a></li>
+            <li><a href="#">新闻</a></li>
+            <li><a href="#">导航</a></li>
+            <li><a href="#">数据</a></li>
+            <li><a href="#">评级</a></li>
+            <li><a href="#">专栏</a></li>
+            <li><a href="#">投友圈</a></li>
+      </ul>
+    </div>
+    <div class="search">
+        <input type="text" value="搜索" >
+    </div>
+</div>
 
 <%= yield %>
 

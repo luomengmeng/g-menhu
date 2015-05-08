@@ -1,7 +1,7 @@
 class Backend::TagsController < Backend::BaseController
 def index
     @title = '类别列表'
-    @tags = Tag.order("created_at desc").all.paginate(page:params[:page],per_page:38)
+    @tags = Tag.order("created_at desc").all.paginate(page:params[:page],per_page:10)
 end
 
 def new

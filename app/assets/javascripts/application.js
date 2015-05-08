@@ -14,5 +14,6 @@
 //= require jquery_ujs
 //= require kindeditor
 //= require_tree .
-// = require kindeditor-min
+// = require jquery-1.9.1.min
+// = require BigSlide
 

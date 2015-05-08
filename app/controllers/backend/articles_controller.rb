@@ -1,14 +1,14 @@
 class Backend::ArticlesController < Backend::BaseController
 def index
     @title = '文章列表'
-    @articles = Article.order("created_at desc").all.paginate(page:params[:page],per_page:8) 
+    @articles = Article.order("created_at desc").all.paginate(page:params[:page],per_page:10) 
 end
 
 def show
     @title = '文章列表'
     #@articles = Article.joins(:articles_tags, :tags).select("articles.*,tags.name").where("tags.id = ?",params['id']).order("created_at desc").paginate(page:params[:page],per_page:8) 
     # @articles  = Article.includes(:tags).order("created_at desc").paginate(page:params[:page],per_page:8) 
-    @articles  = Article.joins(:tags).where("tags.id = ?",params['id']).order("created_at desc").paginate(page:params[:page],per_page:8) 
+    @articles  = Article.joins(:tags).where("tags.id = ?",params['id']).order("created_at desc").paginate(page:params[:page],per_page:10) 
     @tags_name = Tag.find(params['id'])
 end
 
@@ -82,6 +82,6 @@ end
 
 private
     def articles_params
-      params.require(:article).permit(:title,:abstact, :content,:status,:home, :category_id)
+      params.require(:article).permit(:title,:abstact, :content,:status,:home, :category_id, :num)
     end
 end

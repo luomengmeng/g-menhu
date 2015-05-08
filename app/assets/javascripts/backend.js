@@ -26,4 +26,4 @@
 //= require jquery.dataTables.min
 //= require noises
 //= require respond.min
-= require kindeditor-min
+= require kindeditor

@@ -1,7 +1,7 @@
 class Backend::CategoriesController < Backend::BaseController
 def index
     @title = '类别列表'
-    @categories = Category.order("created_at desc").all.paginate(page:params[:page],per_page:8)
+    @categories = Category.order("created_at desc").all.paginate(page:params[:page],per_page:10)
 end
 
 def new

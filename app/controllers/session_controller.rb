@@ -16,7 +16,8 @@ class SessionController < ApplicationController
     if cookies[:user_name] == 'menhu'
       redirect_to backend_users_path
     else
-      render template: "session/new"
+      flash[:error] = '请输入正确的用户名和密码'
+      redirect_to login_path
     end
   end
 
@@ -26,9 +27,10 @@ class SessionController < ApplicationController
   end
 
   def new
-    if cookies[:user_name] == 'menhu'
-      redirect_to backend_articles_path
+    if cookies[:user_name] == 'menhu' 
+      redirect_to backend_articles_path 
     end
+    @error = '用户名或密码错误 '
   end
 
 end

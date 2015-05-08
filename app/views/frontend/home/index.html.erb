@@ -1,1 +1,617 @@
-this is home!
+<!--标签卡切换-->
+<script>
+function setTab(name,cursel,n){
+ for(i=1;i<=n;i++){
+  var menu=document.getElementById(name+i);
+  var con=document.getElementById("con_"+name+"_"+i);
+  menu.className=i==cursel?"hover":"title";
+  con.style.display=i==cursel?"block":"none";
+ }
+}
+</script>
+<!--轮播切换-->
+
+<!--中间第一部分-->
+<div class="main margin45">
+    <div class="width682">
+        <div class="main_01">
+            <div class="focusimg1"><img src="<%=asset_url('i_02.png') %>"></div>
+            <div class="xinxi-01">
+                <div class="xinxi-01-title">
+                    <%  
+                        i=1
+                        @articles_new1.each do |new1| 
+                    %>
+                    <%if i==1%>
+                        <h2><a href="#"><%=new1.title %></a></h2>
+                    <% else %>
+                        <span><a href="#"><%=new1.title %></a></span>
+                        <% if i==2%>|
+                        <% end%>
+                    <% end %>
+                    <% 
+                        i+=1
+                        end 
+                    %>
+                </div>
+                
+                <div class="paragraph-01">
+                   <%  
+                        i=1
+                        @articles_new2.each do |new2| 
+                    %>
+                    <%if i==1%>
+                        <div class="red-shu fm f18 font-w600"><a href="#"><%=new2.title %></a></div>
+                    <% else %>
+                        <span><a href="#"><%=new2.title %></a></span>
+                    <% end %>
+                    <% 
+                        i+=1
+                        end 
+                    %>
+                </div>
+                <div class="paragraph-01">
+                   <%  
+                        i=1
+                        @articles_new3.each do |new| 
+                    %>
+                    <%if i==1%>
+                        <div class="red-shu fm f18 font-w600"><a href="#"><%=new.title %></a></div>
+                    <% else %>
+                        <span><a href="#"><%=new.title %></a></span>
+                    <% end %>
+                    <% 
+                        i+=1
+                        end 
+                    %>
+                </div>
+                <div class="paragraph-01">
+                   <%  
+                        i=1
+                        @articles_new4.each do |new| 
+                    %>
+                    <%if i==1%>
+                        <div class="red-shu fm f18 font-w600"><a href="#"><%=new.title %></a></div>
+                    <% else %>
+                        <span><a href="#"><%=new.title %></a></span>
+                    <% end %>
+                    <% 
+                        i+=1
+                        end 
+                    %>
+                </div>
+              
+            </div>
+        </div>
+        
+        <div class="main_02">
+            <div class="yanbao-left">
+                <div class="yanbao-left-up">
+                    <img src="<%=asset_url('i_03.png') %>">
+                    <span class="fm f18 font-w600"><a href="#">研报</a></span>
+                </div>
+                <div class="yanbao-left-down">
+                    <ul>
+                    <%
+                    @categories_1.each do |ca|
+                        article_info = Article.where("category_id = ?" ,ca.id).limit(1)
+                        article_info.each do |ap|
+                    %>
+                        <li>
+                            <div class="item"><%=ca.name%>|</div>
+                            <span class="_title"><a href="#" ><%=ap.title %> </a></span>
+                            <span class="_more"><a href="#">更多>></a></span>
+                        </li>
+                        <% end %>
+                    <% end %>
+                    </ul>
+                </div>
+            </div>
+            <div class="yanbao-right">
+                <ul>
+                    <%
+                    @categories_2.each do |ca|
+                        article_info = Article.where("category_id = ?" ,ca.id).limit(1)
+                        article_info.each do |ap|
+                    %>
+                        <li>
+                            <div class="item"><%=ca.name%>|</div>
+                            <span class="_title"><a href="#" ><%=ap.title %> </a></span>
+                            <span class="_more"><a href="#">更多>></a></span>
+                        </li>
+                        <% end %>
+                    <% end %>
+                    </ul>
+            </div>
+        </div>
+        
+        <div class="main_03">
+            <div class="tab-01-title"><a href="#" >网贷专栏</a></div>
+            <div class="tab-titles">
+                <a style="cursor:pointer;" class="hover" id="wang1" onclick="setTab('wang',1,3)">看网贷</a>
+                <a style="cursor:pointer;" id="wang2" onclick="setTab('wang',2,3)">网贷视野</a>
+                <a style="cursor:pointer;" id="wang3" onclick="setTab('wang',3,3)">CEO头条</a>
+            </div>
+            <div class="content-tab">
+<!--            里边具体的内容-->
+                <div class="main-content-01" id="con_wang_1">
+                    <div class="focusimg2"><img src="<%=asset_url('i_04.png') %>"></div>
+                    <div class="xinxi-01">
+                        <div class="xinxi-01-title">
+                            <h2><a href="#"><%=@articles_14.first.title %></a></h2>
+                        </div>
+                        <div class="paragraph-01">
+                            <% 
+                                i=1
+                                @articles_14_2.each do |info|
+                                    if i==1
+                            %>
+                            <div class="red-shu fm f18 font-w600"><a href="#"><%=info.title%></a></div>
+                            <% else %>
+                            <span><a href="#"><%=info.title%></a></span>
+                            <% 
+                                end
+                                i+=1
+                            end 
+                            %>
+                        </div>
+                        <div class="paragraph-01">
+                            <% 
+                                i=1
+                                @articles_14_3.each do |info|
+                                    if i==1
+                            %>
+                            <div class="red-shu fm f18 font-w600"><a href="#"><%=info.title%></a></div>
+                            <% else %>
+                            <span><a href="#"><%=info.title%></a></span>
+                            <% 
+                                end
+                                i+=1
+                            end 
+                            %>
+                        </div>
+                        <div class="paragraph-01">
+                            <% 
+                                i=1
+                                @articles_14_4.each do |info|
+                                    if i==1
+                            %>
+                            <div class="red-shu fm f18 font-w600"><a href="#"><%=info.title%></a></div>
+                            <% else %>
+                            <span><a href="#"><%=info.title%></a></span>
+                            <% 
+                                end
+                                i+=1
+                            end 
+                            %>
+                        </div>
+                    </div>
+                </div>
+                <div id="con_wang_2" style="display:none;">
+                    <% 
+                    if @articles_15 != nil
+                    %>
+                    <div class="focusimg2"><img src="<%=asset_url('i_04.png') %>"></div>
+                    <div class="xinxi-01">
+                        <div class="xinxi-01-title">
+                            <h2><a href="#"><%=@articles_15.first.try(:title) %></a></h2>
+                        </div>
+                        <div class="paragraph-01">
+                            <% 
+                                i=1
+                                @articles_15_2.each do |info|
+                                    if i==1
+                            %>
+                            <div class="red-shu fm f18 font-w600"><a href="#"><%=info.title%></a></div>
+                            <% else %>
+                            <span><a href="#"><%=info.title%></a></span>
+                            <% 
+                                end
+                                i+=1
+                            end 
+                            %>
+                        </div>
+                        <div class="paragraph-01">
+                            <% 
+                                i=1
+                                @articles_15_3.each do |info|
+                                    if i==1
+                            %>
+                            <div class="red-shu fm f18 font-w600"><a href="#"><%=info.title%></a></div>
+                            <% else %>
+                            <span><a href="#"><%=info.title%></a></span>
+                            <% 
+                                end
+                                i+=1
+                            end 
+                            %>
+                        </div>
+                        <div class="paragraph-01">
+                            <% 
+                                i=1
+                                @articles_15_4.each do |info|
+                                    if i==1
+                            %>
+                            <div class="red-shu fm f18 font-w600"><a href="#"><%=info.title%></a></div>
+                            <% else %>
+                            <span><a href="#"><%=info.title%></a></span>
+                            <% 
+                                end
+                                i+=1
+                            end 
+                            %>
+                        </div>
+                    </div>
+                    <% else %>
+                    暂无内容
+                    <% end %>
+                </div>
+
+                <div id="con_wang_3" style="display:none;">
+                    <% 
+                    if @articles_16 != nil
+                    %>
+                    <div class="focusimg2"><img src="<%=asset_url('i_04.png') %>"></div>
+                    <div class="xinxi-01">
+                        <div class="xinxi-01-title">
+                            <h2><a href="#"><%=@articles_16.first.try(:title) %></a></h2>
+                        </div>
+                        <div class="paragraph-01">
+                            <% 
+                                i=1
+                                @articles_16_2.each do |info|
+                                    if i==1
+                            %>
+                            <div class="red-shu fm f18 font-w600"><a href="#"><%=info.title%></a></div>
+                            <% else %>
+                            <span><a href="#"><%=info.title%></a></span>
+                            <% 
+                                end
+                                i+=1
+                            end 
+                            %>
+                        </div>
+                        <div class="paragraph-01">
+                            <% 
+                                i=1
+                                @articles_16_3.each do |info|
+                                    if i==1
+                            %>
+                            <div class="red-shu fm f18 font-w600"><a href="#"><%=info.title%></a></div>
+                            <% else %>
+                            <span><a href="#"><%=info.title%></a></span>
+                            <% 
+                                end
+                                i+=1
+                            end 
+                            %>
+                        </div>
+                        <div class="paragraph-01">
+                            <% 
+                                i=1
+                                @articles_16_4.each do |info|
+                                    if i==1
+                            %>
+                            <div class="red-shu fm f18 font-w600"><a href="#"><%=info.title%></a></div>
+                            <% else %>
+                            <span><a href="#"><%=info.title%></a></span>
+                            <% 
+                                end
+                                i+=1
+                            end 
+                            %>
+                        </div>
+                    </div>
+                    <% else %>
+                    暂无内容
+                    <% end %>
+                </div>
+            </div>
+        </div>
+        
+        <div class="main_04">
+            <div class="pingtai">
+            <div class="tab-01-title"><a  href="#">搜平台</a></div></div>
+            <div class="pingtai-con">
+                  <div class="tese">
+                    <div class="tese-title">平台特色&nbsp;&nbsp;：</div>
+                    <ul>
+                        <li><a href="#">不限</a></li>
+                        <li><a href="#">银行背景</a></li>
+                        <li><a href="#">国资背景</a></li>
+                        <li><a href="#">获得风投</a></li>
+                        <li><a href="#">上市公司</a></li>
+                    </ul>
+                </div>
+                <div class="tese">
+                    <div class="tese-title">平均收益&nbsp;&nbsp;：</div>
+                    <ul>
+                        <li><a href="#">不限</a></li>
+                        <li><a href="#">银行背景</a></li>
+                        <li><a href="#">国资背景</a></li>
+                        <li><a href="#">获得风投</a></li>
+                        <li><a href="#">上市公司</a></li>
+                        
+                    </ul>
+                </div>
+                <div class="tese">
+                    <div class="tese-title">主要期限&nbsp;&nbsp;：</div>
+                    <ul>
+                        <li><a href="#">不限</a></li>
+                        <li><a href="#">银行背景</a></li>
+                        <li><a href="#">国资背景</a></li>
+                        <li><a href="#">获得风投</a></li>
+                        <li><a href="#">上市公司</a></li>
+                        
+                    </ul>
+                    <a href="#" class="btn btn-default btn-lg active" role="button">搜索</a>
+                </div>
+        
+            </div>
+            
+        </div>
+    </div>
+    <div class="width302">
+        <div class="biaozhi">
+            <a href="#"><img src="<%=asset_url('icon_03.png') %>" /></a>
+            <a href="#"><img src="<%=asset_url('icon_05.png') %>" /></a>
+            <a href="#"><img src="<%=asset_url('icon_07.png') %>" /></a>
+            <a href="#"><img src="<%=asset_url('icon_09.png') %>" /></a>
+            <a href="#"><img src="<%=asset_url('icon_11.png') %>" /></a>
+            <a class="hot" href="#"><img src="<%=asset_url('hot.png') %>" /></a>
+        </div>
+        <div class="right-02" id="tab1">
+            <div class="tab-02-title"><a href="#" >网贷专栏</a></div>
+             <div class="right2-titles">
+                <a style="cursor:pointer;" id="one1" class="hover" onclick="setTab('one',1,2)">24小时</a>
+                <a style="cursor:pointer;" id="one2" onclick="setTab('one',2,2)">周排行</a>
+               
+            </div>
+            <div class="right2content-tab">
+                <div class="kuaixun" id="con_one_1">
+                    <ul>
+                        <% @wangdai_d.each do |day|%>
+                            <li><a href="#"><img src="<%=asset_url('k_01.png') %>" /></a>
+                            <span><a href="#"><%=day.title %></a></span>
+                            </li>
+                        <% end %>
+                    </ul>
+                </div>
+                <div class="kuaixun" id="con_one_2" style="display:none;">
+                    <ul>
+                        <% @wangdai_w.each do |week|%>
+                            <li><a href="#"><img src="<%=asset_url('k_01.png') %>" /></a>
+                            <span><a href="#"><%=week.title %></a></span>
+                            </li>
+                        <% end %>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="right-03">
+            <a href="#"><img src="<%=asset_url('k_02.png') %>" /></a>
+        </div>
+        <div class="right-04">
+            <div class="tab-02-title"><a href="#" >行业服务</a></div>
+             <div class="right4-titles">
+                <a  class="hover" id="service1"onclick="setTab('service',1,2)">建站</a>
+                <a  id="service2" onClick="setTab('service',2,2)">咨询</a>
+               
+            </div>
+            <div class="right4content-tab">
+                <div class="buildweb" id="con_service_1">
+                    <div class="buildweb-top">
+                        <div id="Big_Slide_box">
+                            <div id="Big_Slide">
+                                <ul>
+                                    <li  id="Big_Slide_0"><img src="<%=asset_url('banner3.jpg') %>"></li>
+                                    <li  id="Big_Slide_1"><img src="<%=asset_url('banner2.jpg') %>"></li>
+                                    <li  id="Big_Slide_2"><img src="<%=asset_url('banner1.png') %>"></li>
+                                </ul>
+                                <a id="Big_Slide_Last"></a>
+                                <a id="Big_Slide_Next"></a>
+                                
+                                <div id="prevL" class="prev" ></div>
+                                <div id="prevR" class="prev" ></div>
+                            </div>
+                        </div>
+                    
+                    </div>
+                    <div class="buildweb-down">
+                        <p>
+      中融网贷系统拥有超过4个主流开发
+    平台,100人以上的开发技术团队，
+    服务超过120家企业完成超过10000
+    张产品设计！我们了解大中小型企业
+    的生意模式，需求，我们倡导让客户
+    感知产品的应用价值，而不仅是产品
+    的功能。
+      </p>
+                    </div>
+                </div>
+                <div id="con_service_2" style="display:none;">咨询内容</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="main margin45">
+        <a href="#"><img src="<%=asset_url('i_05.png') %>"></a>
+</div>
+
+<div class="main margin45">
+    <div class="wangdai">
+        <div class="tab-01-title"><a href="#" >网贷行情</a></div>
+             <div class="main5-titles">
+                <a  id="market1" class="hover" onClick="setTab('market',1,8)">小牛在线</a>
+                <a  id="market2" onClick="setTab('market',2,8)">红岭创投</a>
+                <a  id="market3" onClick="setTab('market',3,8)">金联储</a>
+                <a  id="market4" onClick="setTab('market',4,8)">招商贷</a>
+                <a  id="market5" onClick="setTab('market',5,8)">中金宝</a> 
+                <a  id="market6" onClick="setTab('market',6,8)">金开贷</a> 
+                <a  id="market7" onClick="setTab('market',7,8)">融金所</a> 
+                <a  id="market8" onClick="setTab('market',8,8)">团贷网</a> 
+            </div>
+            <div class="main5content-tab">
+                <div id="con_market_1"><img src="<%=asset_url('i_06.png') %>"></div>
+                <div id="con_market_2" style="display:none;">红岭创投内容</div>
+                <div id="con_market_3" style="display:none;">红岭创投内容</div>
+                <div id="con_market_4" style="display:none;">红岭创投内容</div>
+                <div id="con_market_5" style="display:none;">红岭创投内容</div>
+                <div id="con_market_6" style="display:none;">红岭创投内容</div>
+                <div id="con_market_7" style="display:none;">红岭创投内容</div>
+                <div id="con_market_8" style="display:none;">红岭创投内容</div>
+            </div>
+    </div>
+
+    <div class="hot_tags">
+        <div class="hot-title"><a href="#">热门标签</a></div>
+        <span class="yellow-tag"><a href="#">互联网金融</a></span>
+        <span class="black-tag"><a href="#">互联网金融</a></span>
+        <span class="red-tag"><a href="#">互联网</a></span><span class="green-tag"><a href="#">金融</a></span><span class="red-tag"><a href="#">互联网</a></span><br />
+        <span class="blue-tag"><a href="#">金融</a></span>
+        <span class="black-tag-14"><a href="#">互联网</a></span>
+        <span class="black-tag"><a href="#">金融</a></span>
+        <span class="purple-tag"><a href="#">互联网</a></span><span class="red-tag"><a href="#">金融</a></span><span class="gray-tag"><a href="#">互联网</a></span><span class="green-tag"><a href="#">金融</a></span><span class="red-tag"><a href="#">互联网</a></span>
+    </div>
+</div>
+
+<div class="main margin20">
+    <div class="touyou-circle">
+        <div class="tab-01-title"><a href="#" >投友圈</a></div>
+         <div class="main6-titles">
+           <a  id="touyou1" class="hover" onClick="setTab('touyou',1,4)">理财交流</a>
+            <a  id="touyou2" onClick="setTab('touyou',2,4)">平台曝光</a>
+            <a  id="touyou3" onClick="setTab('touyou',3,4)">事件档案</a>
+            <a  id="touyou4" onClick="setTab('touyou',4,4)">网贷课程</a>
+        </div>
+        <div class="main6content-tab">
+            <div class="licai" id="con_touyou_1">
+                <ul>
+                    <li><a href="#"><img src="<%=asset_url('k_02.png') %>" /></a>
+                        <div class="licai-ul">
+                            <span><a href="#">艺术品抵押成P2P新贵</a></span>
+                            <p>P2P火热之后我们发现卖系统的发了，搞支付的赚了，银行坐
+            不住了，想创业的都来了，评级出现了，第三方多了。</p>
+                        </div>
+                    </li>
+                    <li><a href="#"><img src="<%=asset_url('k_02.png') %>" /></a>
+                        <div class="licai-ul">
+                            <span><a href="#">艺术品抵押成P2P新贵</a></span>
+                            <p>P2P火热之后我们发现卖系统的发了，搞支付的赚了，银行坐
+            不住了，想创业的都来了，评级出现了，第三方多了。</p>
+                        </div>
+                    </li>
+                    <li><a href="#"><img src="<%=asset_url('k_02.png') %>" /></a>
+                        <div class="licai-ul">
+                            <span><a href="#">艺术品抵押成P2P新贵</a></span>
+                            <p>P2P火热之后我们发现卖系统的发了，搞支付的赚了，银行坐
+            不住了，想创业的都来了，评级出现了，第三方多了。</p>
+                        </div>
+                    </li>
+                </ul>
+                <div class="licai-more"><a href="#">更多>>></a></div>
+            </div> 
+            <div id="con_touyou_2" style="display:none;">平台曝光内容</div>
+            <div id="con_touyou_3" style="display:none;">事件档案内容</div>
+            <div id="con_touyou_4" style="display:none;">网贷课程内容</div>
+        </div>
+    </div>
+    <div class="huoyue-right05">
+        <div class="tab-02-title"><a href="#" >活跃投友</a></div>
+         <div class="right5-titles">
+            <a  id="active1" class="hover" onClick="setTab('active',1,2)">经验</a>
+            <a  id="active2" onClick="setTab('active',2,2)">收益</a>
+        </div>
+        <div class="right5content-tab">
+            <div class="huoyue" id="con_active_1">
+                <ul>
+                    <li><a href="#"><img src="<%=asset_url('k_01.png') %>" /></a>
+                    <span>李先生</span><span>3年</span><span>150%</span>
+                    </li>
+                    <li><a href="#"><img src="<%=asset_url('k_01.png') %>" /></a>
+                    <span>李先生</span><span>3年</span><span>150%</span>
+                    </li>
+                    <li><a href="#"><img src="<%=asset_url('k_01.png') %>" /></a>
+                    <span>李先生</span><span>3年</span><span>150%</span>
+                    </li>
+                    <li><a href="#"><img src="<%=asset_url('k_01.png') %>" /></a>
+                    <span>李先生</span><span>3年</span><span>150%</span>
+                    </li>
+                    
+                </ul>
+            </div>
+            <div id="con_active_2" style="display:none;">收益的内容</div>
+        </div>
+    </div>
+</div>
+
+<div class="main margin25"><a href="#"><img src="<%=asset_url('i_05.png') %>"></a></div>
+
+<div class="main margin25" >
+    <div class="pingtai-voice">
+        <div class="tab-01-title"><a href="#" >平台声音</a></div>
+         <div class="main7-titles">
+            <a  id="voice1" class="hover" onClick="setTab('voice',1,2)">上线早知道</a>
+            <a  id="voice2" onClick="setTab('voice',2,2)">平台公告</a>
+        </div>
+        <div class="main7content-tab">
+            <div class="main-content-01" id="con_voice_1">
+                    <div class="focusimg2"><img src="<%=asset_url('i_04.png') %>"></div>
+                    <div class="xinxi-01">
+                        <div class="xinxi-01-title">
+                            <h2><a href="#">艺术品抵押成P2P新贵</a></h2>
+                            
+                        </div>
+                        <div class="paragraph-01">
+                            <div class="red-shu fm f18 font-w600"><a href="#">艺术品抵押成P2P新贵</a></div>
+                            <span><a href="#">艺术品抵押成P2P新贵</a></span>
+                            <span><a href="#">艺术品抵押成p2p新</a></span>
+                        </div>
+                        <div class="paragraph-01">
+                            <div class="red-shu fm f18 font-w600"><a href="#">艺术品抵押成P2P新贵</a></div>
+                            <span><a href="#">艺术品抵押成P2P新贵</a></span>
+                            <span><a href="#">艺术品抵押成p2p新</a></span>
+                        </div>
+                        <div class="paragraph-01">
+                            <div class="red-shu fm f18 font-w600"><a href="#">艺术品抵押成P2P新贵</a></div>
+                            <span><a href="#">艺术品抵押成P2P新贵</a></span>
+                            <span><a href="#">艺术品抵押成p2p新</a></span>
+                        </div>
+                    </div>
+                </div>
+            <div id="con_voice_2" style=" display:none;">平台公告内容</div>
+        </div>
+    </div>
+    <div class="pingtai-activity">
+        <div class="tab-02-title"><a href="#" >平台活动</a></div>
+         <div class="right6-titles">
+            <a  class="hover">更多》》</a>
+        </div>
+        <div class="right6content-tab">
+            <div class="activity">
+                <ul>
+                    <li><a href="#"><img src="<%=asset_url('k_01.png') %>" /></a>
+                    <span><a href="#">艺术品抵押成P2P新贵</a></span>
+                    </li>
+                    <li><a href="#"><img src="<%=asset_url('k_01.png') %>" /></a>
+                    <span><a href="#">艺术品抵押成P2P新贵</a></span>
+                    </li>
+                    <li><a href="#"><img src="<%=asset_url('k_01.png') %>" /></a>
+                    <span><a href="#">艺术品抵押成P2P新贵</a></span>
+                    </li>
+                    <li><a href="#"><img src="<%=asset_url('k_01.png') %>" /></a>
+                    <span><a href="#">艺术品抵押成P2P新贵</a></span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="main margin25"><a href="#"><img src="<%=asset_url('i_05.png') %>"></a></div>
+
+<div class="footer margin25">
+
+</div>
+

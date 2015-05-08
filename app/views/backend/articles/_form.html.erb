@@ -10,6 +10,10 @@
             <%= f.select :category_id, Category.all.collect { |p| [p.name, p.id]  } ,{},{:class => "form-control"} %>
         </div>
         <div class="form-group">
+            <label>文章浏览量</label>
+            <%= f.text_field :num, :class => "form-control" %>
+        </div>
+        <div class="form-group">
             <label>文章标签</label>
             <% Tag.all.each do |ta|%>
               <label class="checkbox-inline"><%= check_box_tag ("select[]"), ta.id, (@article.tags.include?(ta) ? true : false) %><%=ta.name%></label>
@@ -53,13 +57,14 @@
             <label>文章内容</label>
             <%= f.text_area :content, required: false, input_html: {required: true, class: 'span12'} %>
         </div>
-        <button type="submit" class="btn btn-default" id="send">Submit Button</button>
-        <button type="reset" class="btn btn-default">Reset Button</button>
+        <button type="submit" class="btn btn-outline btn-primary" id="send">提交</button>
+        <button type="reset" class="btn btn-outline btn-primary">重置</button>
     </form>
 </div>
 
 <script type="text/javascript">
-KindEditor.ready(function(K) {
+$(function(){
+  KindEditor.ready(function(K) {
   K.create('#article_content', {
     width: "120%",
     allowFileManager: true,
@@ -67,7 +72,6 @@ KindEditor.ready(function(K) {
     fileManagerJson: '/kindeditor/filemanager'
   });
 });
-$(function(){
        $("input[error='is']").each(function(){
            var $required = $('<strong  style="color: red;font-size: 12px;"></strong>');
            $(this).parent().append($required);

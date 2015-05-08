@@ -1,7 +1,7 @@
 class Backend::UsersController < Backend::BaseController
 def index
     @title = '用户列表'
-    @users = User.order("created_at desc").all.paginate(page:params[:page],per_page:8)
+    @users = User.order("created_at desc").all.paginate(page:params[:page],per_page:10)
 end
 
 def new

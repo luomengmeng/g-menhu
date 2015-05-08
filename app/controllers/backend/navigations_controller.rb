@@ -1,12 +1,12 @@
 class Backend::NavigationsController < Backend::BaseController
 def index
     @title = '平台列表'
-    @navigations = Navigation.order("created_at desc").all.paginate(page:params[:page],per_page:8) 
+    @navigations = Navigation.order("created_at desc").all.paginate(page:params[:page],per_page:10) 
 end
 
 def show
     @title = '平台列表'
-    @navigations = Navigation.where("province_id = ?", params[:id]).order("created_at desc").all.paginate(page:params[:page],per_page:8) 
+    @navigations = Navigation.where("province_id = ?", params[:id]).order("created_at desc").all.paginate(page:params[:page],per_page:10) 
 end
 
 def new
