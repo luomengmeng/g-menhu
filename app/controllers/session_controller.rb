@@ -29,8 +29,11 @@ class SessionController < ApplicationController
   def new
     if cookies[:user_name] == 'menhu' 
       redirect_to backend_articles_path 
+    else
+      render partial: 'new'
     end
     @error = '用户名或密码错误 '
+    
   end
 
 end

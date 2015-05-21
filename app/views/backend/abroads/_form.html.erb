@@ -1,0 +1,55 @@
+<div class="col-lg-6">
+    <form role="form">
+        <div class="form-group">
+            <label>国外平台名称</label>
+            <%= f.text_field :name, :class => "form-control" ,:placeholder =>  "Enter categories_title" , :error => 'is'%>
+        </div>
+        <div class="form-group">
+            <label>平台连接</label>
+            <%= f.text_field :url, :class => "form-control" ,:placeholder =>  "Enter categories_title" , :error => 'is'%>
+        </div>
+
+        <button type="submit" class="btn btn-outline btn-primary" id="send">提交</button>
+        <button type="reset" class="btn btn-outline btn-primary">重置</button>
+    </form>
+</div>
+<script type="text/javascript">
+$(function(){
+        //文本框失去焦点后
+       $("input[error='is']").blur(function(){
+            var $parent = $(this).parent();
+            $parent.find(".formtips").remove();
+            if( $(this).is('#abroad_name') ){
+                   if( this.value==""){
+                    $(this).parent().removeClass().addClass("form-group has-error");
+                       var errorMsg = '名称不能为空';
+                       $parent.append('<span class="formtips onError" style="color: red;font-size: 12px;">'+errorMsg+'</span>');
+                   }else{
+                       $(this).parent().removeClass().addClass("form-group has-success");
+                   }
+            }
+            if( $(this).is('#abroad_url') ){
+                   if( this.value==""){
+                    $(this).parent().removeClass().addClass("form-group has-error");
+                       var errorMsg = '连接不能为空';
+                       $parent.append('<span class="formtips onError" style="color: red;font-size: 12px;">'+errorMsg+'</span>');
+                   }else{
+                       $(this).parent().removeClass().addClass("form-group has-success");
+                   }
+            }
+       }).keyup(function(){
+          $(this).triggerHandler("blur");
+       }).focus(function(){
+            $(this).triggerHandler("blur");
+       });//end blur
+       //提交，最终验证。
+        $('#send').click(function(){
+               $("input[error='is']").trigger('blur');
+               var numError = $('form .onError').length;
+               if(numError){
+                alert("请输入正确信息");
+                   return false;
+               }
+        });
+})
+</script>

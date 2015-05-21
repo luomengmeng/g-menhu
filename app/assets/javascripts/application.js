@@ -13,7 +13,11 @@
 //= require jquery
 //= require jquery_ujs
 //= require kindeditor
-//= require_tree .
-// = require jquery-1.9.1.min
-// = require BigSlide
+
+//= require BigSlide
+//= require jquery-1.9.1.min
+//= require tagswitch
+//= require zzsc
+//= require xixi
+
 

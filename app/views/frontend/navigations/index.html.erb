@@ -1,0 +1,181 @@
+<script>
+function setTab(name,cursel,n){
+ for(i=1;i<=n;i++){
+  var menu=document.getElementById(name+i);
+  var con=document.getElementById("con_"+name+"_"+i);
+  menu.className=i==cursel?"hover":"title";
+  con.style.display=i==cursel?"block":"none";
+ }
+}
+</script>
+<style>
+    .area-bj-con a:hover{color: #6B6B6B;display: block;background: none repeat scroll 0% 0% #fff;border-radius: 20px;}
+</style>
+<!--热点平台-平台活动-->
+<div class="main margin45">
+    <div class="nav_part1">
+        <div class="nav_part1_up">
+            <div class="nav_part1_up_left">
+                <div class="hot-flag"><img src="<%=asset_url('n_01.png') %>"></div>
+                <div class="hot-flag-con">
+                    <% @rdpt.each do |r|%>
+                    <a href="<%=frontend_navigation_path(r) %>"><img width="100" height="36" src="<%=r.logo.present? ? r.logo : asset_url('f_01.png') %>" title="<%=r.name%>"></a>
+                    <% end %>
+                </div>
+            </div>
+            <div class="nav_part1_up_right">
+                <div class="flag-activity"><img src="<%=asset_url('n_03.png') %>"></div>
+                <div class="flag-activity-con">
+                    <ul>
+                        <% @pthd.each do |p|%>
+                        <li><%=link_to p.title, frontend_article_path(p)%></li>
+                        <% end %>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="nav_part1_down">
+            <ul>
+                <li><a href="http://www.zrhx111.com/" target="_blank">平台建站</a></li>
+                <!-- <li><a href="#">网贷记账软件（下载）</a></li> -->
+                <li><a href="http://zhixing.court.gov.cn/search/" target="_blank">法院被执行人信息查询</a></li>
+                <li><a href="http://www.miitbeian.gov.cn/publish/query/indexFirst.action" target="_blank">域名备案查询</a></li>
+                <li><a href="http://gsxt.saic.gov.cn/" target="_blank">企业信息公示</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!--中间信息显示-->
+<div class="main">
+    <div class="middle_info">
+    <p>302558次，帮助投友直达平台。申请导航请联系QQ:3038728505</p>
+    </div>
+</div>
+<!--中间TAB选项卡信息显示-->
+<div class="main">
+    <div class="functiontab-show">
+        <a id="one1" class="hover" onClick="setTab('one',1,5)">网贷平台</a>
+        <a id="one2" onClick="setTab('one',2,5)">问题平台</a>
+        <a id="one3" onClick="setTab('one',3,5)">国外平台</a>
+        <a id="one4" onClick="setTab('one',4,5)">系统建站</a>
+        <a id="one5" style="border:none" onClick="setTab('one',5,5)">网络理财</a>
+    </div>
+    <div class="functiontab-show-con">
+        <div id="con_one_1">
+        <div class="classify-01">
+            <span>平台考察&nbsp;&nbsp;:&nbsp;&nbsp;</span>
+            <div class="buxian"><a class="hover" href="/frontend/navigations">不限</a></div>
+            <div class="classify-info">
+                <% @investigates.each do |i|%>
+                    <a alt = "<%=i.id%>" state = "investigates"><%=i.name %></a>
+                <% end %>
+            </div>
+        </div>
+        <div class="classify-02">
+            <span>上线时间&nbsp;&nbsp;:&nbsp;&nbsp;</span>
+            <div class="buxian"><a href="/frontend/navigations">不限</a></div>
+            <div class="classify-info">
+                <% @lines.each do |l|%>
+                    <a alt = "<%=l.id%>" state = "lines"><%=l.name %></a>
+                <% end %>
+            </div>
+        </div>
+        
+        <div class="classify-03" style="display:none">
+            <span>平台省份&nbsp;&nbsp;:&nbsp;&nbsp;</span>
+            <div class="buxian"><a href="/frontend/navigations">不限</a></div>
+            <div class="classify-info">
+                <% @provinces.each do |p|%>
+                    <%=link_to p.name , frontend_navigation_path(p,:state => 'provinces') %>
+                <% end %>
+            </div>
+        </div>
+
+        <div class="area">
+            <% @provinces.each do |p|%>
+            <% num = Navigation.where("province_id = ?",p.id).length %>
+                <div class="area-bj" <%="style=display:none" if num == 0 %>>
+                    <span class="area-title"><%=p.name%>（<%=num %>）</span>
+                    <div class="area-bj-con">
+                        <% Navigation.where("province_id = ?" , p.id).each do |n|%>
+                        <%=link_to n.name , frontend_navigation_path(n) %>
+                        <% end %>
+                     </div>
+                 </div>
+             <% end %>
+        </div>
+
+        </div>
+        <div id="con_one_2" style="display:none;">
+            <div class="classify-01">
+                <span>平台状态&nbsp;&nbsp;:&nbsp;&nbsp;</span>
+                <div class="buxian"><a class="hover" href="javascript:void(0);">不限</a></div>
+                <div class="classify-info">
+                    <% @problems.each do |i|%>
+                        <a alt = "<%=i.id%>" state = "problems"><%=i.name %></a>
+                    <% end %>
+                </div>
+            </div>
+            <div class="area">
+                <% @prolem_provinces.each do |p|%>
+                <% navigations = Navigation.where("province_id = ? and problem_id != ?",p.id, 1)%>
+                <% num = navigations.length%>
+                <div class="area-bj">
+                    <span class="area-title" style="margin-left:0px;color:#3A93F7;"><%=p.name%>（<%=num %>）</span>
+                    <div class="area-bj-con">
+                        <% navigations.each do |n|%>
+                        <%=link_to n.name , frontend_navigation_path(n) %>
+                        <% end %>
+                     </div>
+                </div>
+             <% end %>
+            </div>
+        </div>
+        <style>
+            .special_color {background: #3A93F7;border-radius: 20px;}
+        </style>
+        <script type="text/javascript">
+            $(function(){
+                $('.classify-info a').click(function(){
+                  $(this).parent().each(function () {//移除其余非点中状态
+                        $('.classify-info a').removeClass("special_color");
+                    });
+                    $(this).addClass("special_color");//给所点中的增加样式
+                  problem_id = $(this).attr("alt");
+                  params_state = $(this).attr("state");
+                  $.ajax({
+                      url: "/navigations?id="+problem_id+"&state="+params_state,
+                      method: "GET",
+                      success: function (obj) {
+                            $(".area").text("");
+                            $(obj).each(function(index,item){
+                                $(".area").append("<div class='area-bj'><span class='area-title' style='margin-left:0px;color:#3A93F7;''>"+item.provinces_name+"（2）</span><div class='area-bj-con'><a href='/frontend/navigations/"+item.id+"'>"+item.navigations_name+"</a></div></div>");
+                            });
+                      }
+                    });
+                 })
+            });
+        </script>
+
+        </div>
+        <div id="con_one_3" style="display:none;">
+            <div class="question-flag">
+                <ul>
+                    <% @abroads.each do |n| %>
+                    <li><a href="<%=n.url %>"><%=n.name %></a></li>
+                    <% end %>
+                </ul>
+            </div>
+        </div>
+        <div id="con_one_4" style="display:none;">
+            <div class="question-flag">
+                <ul>
+                    <% @stations.each do |s| %>
+                    <li><a href="<%=s.url %>"><%=s.name %></a></li>
+                    <% end %>
+                </ul>
+            </div>
+        </div>
+        <div id="con_one_5" style="display:none;">网络理财内容</div>
+    </div>
+</div>

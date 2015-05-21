@@ -12,9 +12,6 @@ end
 def create
     @tag = Tag.new(tag_params)
     if @tag.save
-      article = Article.find @tag.id
-      @tag.article << article
-      @tag.save
       flash[:success] = '添加成功'
       redirect_to backend_tags_path
     else

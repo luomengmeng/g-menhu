@@ -5,11 +5,14 @@ def index
 end
 
 def show
-    @title = '文章列表'
-    #@articles = Article.joins(:articles_tags, :tags).select("articles.*,tags.name").where("tags.id = ?",params['id']).order("created_at desc").paginate(page:params[:page],per_page:8) 
-    # @articles  = Article.includes(:tags).order("created_at desc").paginate(page:params[:page],per_page:8) 
+  @title = '文章列表'
+  if params['state'] == 'tag'
     @articles  = Article.joins(:tags).where("tags.id = ?",params['id']).order("created_at desc").paginate(page:params[:page],per_page:10) 
-    @tags_name = Tag.find(params['id'])
+    @name = Tag.find(params['id'])
+  else
+    @articles  = Article.joins(:category).where("categories.id = ?",params['id']).order("created_at desc").paginate(page:params[:page],per_page:10) 
+    @name = Category.find(params['id'])
+  end
 end
 
 def new
@@ -82,6 +85,6 @@ end
 
 private
     def articles_params
-      params.require(:article).permit(:title,:abstact, :content,:status,:home, :category_id, :num)
+      params.require(:article).permit(:title,:abstact, :content,:status,:home, :category_id, :num, :avatar, :author)
     end
 end

@@ -21,7 +21,7 @@
                       <% @provinces.each do |a| %>
                         <tr>
                           <td><%= a.id %></td>
-                          <td><%= link_to a.name , backend_navigation_path(a)%></td>
+                          <td><%= link_to a.name , backend_navigation_path(a,:state => 'province')%> (<%=Navigation.where("province_id = ?",a.id).length%>)</td>
                           <td><%= a.created_at.strftime('%Y-%m-%d') %></td>
                           <td>
                             <%= link_to '编辑' , edit_backend_province_path(a) %>

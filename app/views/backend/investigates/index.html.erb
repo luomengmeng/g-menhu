@@ -1,0 +1,39 @@
+<div class="row">
+  <div class="col-lg-12">
+      <h2 class="page-header">考察名称列表</h2>
+      <p><a href="/backend/investigates/new" class="btn btn-primary">添加名称</a></p>
+  </div>
+</div>
+<div class="col-lg-12">
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <div class="dataTable_wrapper">
+                <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                    <thead>
+                        <tr>
+                            <th>考察序号</th>
+                            <th>考察名称</th>
+                            <th>添加时间</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                      <% @investigates.each do |a| %>
+                        <tr>
+                          <td><%= a.id %></td>
+                          <td><%= link_to a.name , backend_navigation_path(a,:state => 'investigate')%> (<%=Navigation.where("investigate_id = ?",a.id).length%>)</td>
+                          <td><%= a.created_at.strftime('%Y-%m-%d') %></td>
+                          <td>
+                            <%= link_to '编辑' , edit_backend_investigate_path(a) %>
+                            <%= link_to '删除' , backend_investigate_path(a), :method => 'delete', data:  {:confirm => '确定要删除吗？'} %>
+                          </td>
+                        </tr>
+                      <% end %>
+                    </tbody>
+                </table>
+                <%= will_paginate @investigates %>
+            </div>
+        </div>
+    </div>
+</div>
+

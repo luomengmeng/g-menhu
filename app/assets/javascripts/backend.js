@@ -13,7 +13,6 @@
 //= require jquery_ujs
 //= require raphael-min
 //= require morris.min
-
 //= require bootstrap.min
 //= require metisMenu.min
 //= require raphael-min
@@ -26,4 +25,6 @@
 //= require jquery.dataTables.min
 //= require noises
 //= require respond.min
-= require kindeditor
+
+
+

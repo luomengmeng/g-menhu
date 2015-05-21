@@ -2,7 +2,7 @@
 <html>
 <head>
   <title>Gateway1</title>
-  <%= stylesheet_link_tag    'backend', media: 'all', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
@@ -13,20 +13,76 @@
     <div class="logo-nav">
         <ul>
             <li><a href="/">首页</a></li>
-            <li><a href="#">新闻</a></li>
-            <li><a href="#">导航</a></li>
-            <li><a href="#">数据</a></li>
-            <li><a href="#">评级</a></li>
-            <li><a href="#">专栏</a></li>
-            <li><a href="#">投友圈</a></li>
+            <li><a href="/frontend/articles/10?state=category">新闻</a></li>
+            <li><a href="/frontend/navigations">导航</a></li>
+            <li><a href="/frontend/articles/2?state=category">政策解读</a></li>
+            <li><a href="/frontend/articles/3?state=category">平台要闻</a></li>
+<!--             <li><a href="#">数据分析</a></li>
+            <li><a href="#">理财攻略</a></li>
+            <li><a href="#">专家观点</a></li> -->
       </ul>
     </div>
-    <div class="search">
+<!--     <div class="search">
         <input type="text" value="搜索" >
-    </div>
+    </div> -->
 </div>
 
 <%= yield %>
 
+<div class="footer margin25">
+  <div class="main">
+      <div class="wangdaishuo">
+          <div class="wup">
+              <div class="wup-biglogo">网贷说</div>
+                <div class="wup-1" style="width:138px;">关注互联网金融</div>
+            </div>
+            <div class="wdown">
+              <p>大家在关注</p>
+                <p class="c_d1"><a style="color:#D1D1D1;" href="http://www.yataitouzi.com/">P2P网贷</a></p>
+                <p class="c_d1"><a style="color:#D1D1D1;" href="http://www.yataitouzi.com/">央行降息</a></p>
+            </div>
+        </div>
+        <div class="dingyue">
+          <div class="wup">
+                <p>微信公众号</p>
+                <p class="c_d1"><img width="100" src="<%=asset_url('20150417144316_28979.png')%>"></p>
+            </div>
+            <div class="wdown">
+              <p>友情链接</p>
+                <div class="d-flink">
+                  <% @friends = Title.where("status = ? ", 1).all %>
+                  <% @friends.each do |f|%>
+                    <a href="<%=f.name_url%>" target="_bank"><%=f.name%></a>|
+                  <% end %>
+                </div>
+            </div>
+        </div>
+        <div class="f-aboutus">
+          <div class="wup-1">关于我们</div>
+            <p>网贷说（www.wangdaishuo.com）
+是国内人气最高的互联网金融交流平台。
+坚持开放、分享、成长的宗旨，为广大
+投资者及投资爱好者提供免费的交流互
+动平台。目前正通过网站、微博、微信
+为投资者提供高水平的免费互联网金融
+行业讲座和领先的金融资讯分享。</p>
+        </div>
+    </div>
+</div>   
+<div class="footer1" style="height:56px;">
+  <div class="main">
+<!--       <div class="f1-link">
+          <ul>
+              <li><a href="#">广告合作</a></li>
+                <li><a href="#">广告合作</a></li>
+                <li><a href="#">广告合作</a></li>
+                <li><a href="#">广告合作</a></li>
+                <li><a href="#">广告合作</a></li>
+                <li><a href="#">广告合作</a></li>
+            </ul>
+        </div> -->
+        <div class="copyright">Copyright © 2015 网贷说 - 网贷说微信号：wangdaishuo - 京ICP备1253804号-8</div>
+    </div>
+</div>    
 </body>
 </html>

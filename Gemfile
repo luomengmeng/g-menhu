@@ -48,9 +48,9 @@ group :development, :test do
   #富文本编辑器  
   gem 'rails_kindeditor'  
 
-  # gem "CKEditor"
   #文件上传  
-  gem 'paperclip'  
+  # gem 'paperclip'  
+  gem "carrierwave"
 
   #注册、登录功能
   gem 'devise'
@@ -58,5 +58,14 @@ group :development, :test do
   #page
 gem 'will_paginate', '~> 3.0.4'
 
+gem 'quiet_assets', '1.0.2'
+gem 'pry-rails'
+gem 'pry-doc'
+gem 'pry-nav' 
+
+
 end
+
+
+
 

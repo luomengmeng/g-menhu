@@ -1,0 +1,72 @@
+<script>
+function setTab(name,cursel,n){
+ for(i=1;i<=n;i++){
+  var menu=document.getElementById(name+i);
+  var con=document.getElementById("con_"+name+"_"+i);
+  menu.className=i==cursel?"hover":"title";
+  con.style.display=i==cursel?"block":"none";
+ }
+}
+
+</script>
+    <div class="width302">
+        <div class="biaozhi" style="margin-top:30px;">
+            <a href="#"><img src="<%=asset_url('icon_03.png') %>" /></a>
+            <a href="#"><img src="<%=asset_url('icon_05.png') %>" /></a>
+            <a href="#"><img src="<%=asset_url('icon_07.png') %>" /></a>
+            <a href="#"><img src="<%=asset_url('icon_09.png') %>" /></a>
+            <a href="#"><img src="<%=asset_url('icon_11.png') %>" /></a>
+            <a class="hot" href="#"><img src="<%=asset_url('hot.png') %>" /></a>
+        </div>
+        <div class="right-03">
+            <a href="#"><img src="<%=asset_url('k_02.png') %>" /></a>
+        </div>
+        
+        <div class="right-04">
+            <div class="tab-02-title"><a href="#" >行业服务</a></div>
+             <div class="right4-titles">
+                <a  class="hover" id="service1"onclick="setTab('service',1,2)">建站</a>
+                <a  id="service2" onClick="setTab('service',2,2)">咨询</a>
+               
+            </div>
+            <div class="right4content-tab">
+                <div class="buildweb" id="con_service_1">
+                    <div class="buildweb-top">
+                        <div id="Big_Slide_box">
+                            <div id="Big_Slide">
+                                <ul>
+                                    <li  id="Big_Slide_0"><a href="http://www.zrhx111.com"><img src="<%=asset_url('banner3.jpg') %>"></a></li>
+                                    <li  id="Big_Slide_1"><a href="http://www.zrhx111.com"><img src="<%=asset_url('banner2.jpg') %>"></a></li>
+                                    <li  id="Big_Slide_2"><a href="http://www.zrhx111.com"><img src="<%=asset_url('banner1.png') %>"></a></li>
+                                </ul>
+                                <a id="Big_Slide_Last"></a>
+                                <a id="Big_Slide_Next"></a>
+                                
+                                <div id="prevL" class="prev" ></div>
+                                <div id="prevR" class="prev" ></div>
+                            </div>
+                        </div>
+                    
+                    </div>
+                    <div class="buildweb-down1">
+                        <p>中融网贷系统拥有超过4个主流开发
+    平台,100人以上的开发技术团队，
+    服务超过120家企业完成超过10000
+    张产品设计！我们了解大中小型企业
+    的生意模式，需求，我们倡导让客户
+    感知产品的应用价值，而不仅是产品
+    的功能。</p>
+                    </div>
+                </div>
+                <div id="con_service_2" style="display:none;">
+                    <div class="buildweb-down1">
+<p> </p>
+<p> 客服热线：400-813-1080 </p>
+<p> 服务邮箱：md@zrhx111.com </p>
+<p> 公司地址：北京丰台区玉林里1号北京商务会馆8楼</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>

@@ -10,6 +10,19 @@
             <%= f.select :province_id, Province.all.collect { |p| [p.name, p.id]  } ,{},{:class => "form-control"} %>
         </div>
         <div class="form-group">
+            <label>平台考察</label>
+            <%= f.select :investigate_id, Investigate.all.collect { |k| [k.name, k.id]  } ,{},{:class => "form-control"} %>
+        </div>
+        <div class="form-group">
+            <label>上线时间</label>
+            <%= f.select :online_time, Line.all.collect { |s| [s.name, s.id]  } ,{},{:class => "form-control"} %>
+        </div>
+        <div class="form-group">
+            <label>问题平台</label>
+            <%= f.select :problem_id, Problem.all.collect { |w| [w.name, w.id]  } ,{},{:class => "form-control"} %>
+        </div>
+        
+        <div class="form-group">
             <label>自动投标&nbsp;&nbsp;&nbsp;</label>
             <label>
                 <%= f.radio_button :auto_bidding , "1", :checked => 'checked' %>支持&nbsp;&nbsp;&nbsp;
@@ -19,25 +32,39 @@
             </label>
         </div>
         <div class="form-group">
+            <label>热点平台&nbsp;&nbsp;&nbsp;</label>
+            <label>
+                <%= f.radio_button :hot , "1", :checked => 'checked' %>是&nbsp;&nbsp;&nbsp;
+            </label>
+            <label>
+                <%= f.radio_button :hot ,"2", :value => '2' %>否
+            </label>
+        </div>
+        <div class="form-group">
+            <label>LOGO</label>
+            <%= f.file_field :logo %>
+            <%= f.hidden_field :logo_cache %>
+            <%= image_tag(@navigation.logo_url)  if @navigation.logo.present? %>
+        </div>
+
+        <div class="form-group">
             <label>平台连接</label>
             <%= f.text_field :name_url, :class => "form-control" ,:placeholder =>  "平台连接", :error =>'is' %>
         </div>
+        
         <div class="form-group">
-            <label>平台所在地区</label>
-            <%= f.text_field :area, :class => "form-control" ,:placeholder =>  "平台所在地区", :error =>'is' %>
-        </div>
-        <div class="form-group">
-            <label>上线时间</label>
-            <%= f.text_field :online_time, :class => "form-control" ,:placeholder =>  "上线时间", :error =>'is' %>
+            <label>平均收益</label>
+            <%= f.text_field :average_income, :class => "form-control" ,:placeholder =>  "平均收益", :error =>'is' %>
         </div>
         <div class="form-group">
             <label>注册资金</label>
             <%= f.text_field :registered_capital, :class => "form-control" ,:placeholder =>  "注册资金", :error =>'is' %>
         </div>
         <div class="form-group">
-            <label>平均收益</label>
-            <%= f.text_field :average_income, :class => "form-control" ,:placeholder =>  "平均收益", :error =>'is' %>
+            <label>平台所在地区</label>
+            <%= f.text_field :area, :class => "form-control" ,:placeholder =>  "平台所在地区", :error =>'is' %>
         </div>
+        
         <div class="form-group">
             <label>详细收益利率</label>
             <%= f.text_field :with_income, :class => "form-control" ,:placeholder =>  "详细收益利率", :error =>'is' %>

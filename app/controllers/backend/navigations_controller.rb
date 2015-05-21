@@ -1,22 +1,32 @@
 class Backend::NavigationsController < Backend::BaseController
 def index
     @title = '平台列表'
-    @navigations = Navigation.order("created_at desc").all.paginate(page:params[:page],per_page:10) 
+    @navigation = Navigation.order("created_at desc").all.paginate(page:params[:page],per_page:10) 
 end
 
 def show
     @title = '平台列表'
-    @navigations = Navigation.where("province_id = ?", params[:id]).order("created_at desc").all.paginate(page:params[:page],per_page:10) 
+    params_id = params[:id]
+    params_state = params[:state]
+    if params_state == 'province'
+      @navigations = Navigation.where("province_id = ?", params_id).order("created_at desc").all.paginate(page:params[:page],per_page:10) 
+    elsif params_state == 'investigate'
+      @navigations = Navigation.where("investigate_id = ?", params_id).order("created_at desc").all.paginate(page:params[:page],per_page:10) 
+    elsif params_state == 'line'
+      @navigations = Navigation.where("line_id = ?", params_id).order("created_at desc").all.paginate(page:params[:page],per_page:10) 
+    else
+      @navigations = Navigation.where("problem_id = ?", params_id).order("created_at desc").all.paginate(page:params[:page],per_page:10) 
+    end
 end
 
 def new
     @title = '添加文章'
-    @navigations = Navigation.new
+    @navigation = Navigation.new
 end
 
 def create
-    @navigations = Navigation.new(navigation_params)
-    if @navigations.save
+    @navigation = Navigation.new(navigation_params)
+    if @navigation.save
       flash[:success] = '添加成功'
       redirect_to backend_navigations_path
     else
@@ -30,6 +40,7 @@ def edit
 end
 
 def update
+  # binding.pry
     navigation = Navigation.find(params[:id])
     respond_to do |format|
       if navigation.update_attributes(navigation_params)
@@ -50,7 +61,7 @@ end
 
 private
     def navigation_params
-      params.require(:navigation).permit(:with_income, :title, :name, :abstract, :online_time, :name_url, :province_id, :area, :registered_capital, :average_income, :investment_period, :auto_bidding, :creditor, :trust_funds, :tender_guarantee, :security_mode, :guarantee_agency, :management_fee, :prepaid_fee, :withdrawal_fee, :transfer_fee, :method_payment, :vip_fee, :address, :free_phone, :phone, :fax, :mail)
+      params.require(:navigation).permit(:logo, :hot, :investigate_id, :line_id, :problem_id, :with_income, :title, :name, :abstract, :online_time, :name_url, :province_id, :area, :registered_capital, :average_income, :investment_period, :auto_bidding, :creditor, :trust_funds, :tender_guarantee, :security_mode, :guarantee_agency, :management_fee, :prepaid_fee, :withdrawal_fee, :transfer_fee, :method_payment, :vip_fee, :address, :free_phone, :phone, :fax, :mail)
     end
 
 end

@@ -1,0 +1,93 @@
+<script>
+function setTab(name,cursel,n){
+    for(i=1;i<=n;i++){
+        var menu=document.getElementById(name+i);
+        var con=document.getElementById("con_"+name+"_"+i);
+        menu.className=i==cursel?"hover":"title";
+        con.style.display=i==cursel?"block":"none";
+    }
+}
+</script>
+<div class="main margin45">
+	<div class="Breadcrumb"><a href="/">首页</a>>&nbsp;&nbsp;&nbsp;<a href="<%=@pt.first.name_url %>"><%=@pt.first.name %>
+    </a></div>
+	<div class="width682">
+    	<% @pt.each do |p|%>
+        <div class="con-658">
+        	<div class="hongling-logo-div">
+            	<div class="hongling-logo"><a href="<%=@pt.first.name_url %>"><img width="168" height="56" src="<%=@pt.first.logo.present? ? @pt.first.logo : asset_url('f_01.png') %>"></div></a>
+                <div class="hongling-con">
+            	       <!-- <div class="hongling-conup">红岭创投发展指数：<span>51.04</span>2015年4月排名第11位</div> -->
+                    <div class="hongling-condown"><a class="b" href="<%=@pt.first.name_url %>" target="_bank">前往平台 >></a><!-- <a class="g" href="#">加入协会</a> --></div>
+                </div>
+            </div>
+            <div class="hongling-details">
+            	<ul>
+            	       <li><span class="blue">平均收益</span><div class="detailcon"><%=p.average_income%></div></li>
+                    <li><span class="green">注册资金</span><div class="detailcon"><%=p.registered_capital%></div></li>
+                    <li><span class="yellow">上线时间</span><div class="detailcon"><%=Line.find(p.online_time).name%></div></li>
+                    <li><span class="orange">所在地区</span><div class="detailcon"><%=p.area%></div></li>
+                    <li><span>投资期限</span><div class="detailcon"><%=p.investment_period%></div></li>
+                    <li><span>债权转让</span><div class="detailcon"><%=p.creditor%></div></li>
+                    <li><span>资金托管</span><div class="detailcon"><%=p.trust_funds%></div></li>
+                    <li><span>自动投标</span><div class="detailcon"><%=p.auto_bidding == 1 ? '支持 ' : '暂不支持'%></div></li>
+                    <li><span>投标保障</span><div class="detailcon"><%=p.tender_guarantee%></div></li>
+                    
+                </ul>
+            </div>
+            
+            <div class="hongling-tab">
+                <script>
+                    $(function(){
+                        $(".hongling-tab-title a:last-child()").css("width","92px");
+                    });
+                </script>
+            	<div class="hongling-tab-title">
+            	       <a id="hongling1" onClick="setTab('hongling',1,7)" >平台简介</a>
+                    <a id="hongling2" onClick="setTab('hongling',2,7)">保障模式</a>
+                    <a id="hongling3" onClick="setTab('hongling',3,7)">担保机构</a>
+                    <a class="hover" id="hongling4" onClick="setTab('hongling',4,7)">费用</a>
+                    <a id="hongling5" onClick="setTab('hongling',5,7)">支付方式</a>
+                    <a id="hongling6" onClick="setTab('hongling',6,7)">联系地址</a>
+                    <a id="hongling7" onClick="setTab('hongling',7,7)">联系方式</a>
+                </div>
+                
+
+                <div class="hongling-tabcon">
+	       <div id="con_hongling_1" style="display:none;" class="gaoguan"><%=p.abstract %></div>
+                    <div id="con_hongling_2" style="display:none;" class="gaoguan"><%=p.security_mode %></div>
+                    <div id="con_hongling_3" style="display:none;" class="gaoguan"><%=p.guarantee_agency %></div>
+                    <div class="gaoguan" id="con_hongling_4">
+                        管理费：<%=p.management_fee %> <br />
+                        充值费：<%=p.prepaid_fee %> <br />
+                        提现费：<%=p.withdrawal_fee %> <br />
+                        VIP费用：<%=p.vip_fee %> <br />
+                        转让费用：<%=p.transfer_fee %> 
+                    </div>
+                    
+                    <div id="con_hongling_5" style="display:none;" class="gaoguan"><%=p.method_payment %></div>
+                    <div id="con_hongling_6" style="display:none;" class="gaoguan"><%=p.address %></div>
+                    <div id="con_hongling_7" style="display:none;" class="gaoguan">
+                        400电话：<%=p.free_phone %> <br />
+                        公司电话：<%=p.phone %> <br />
+                        公司传真：<%=p.fax %> <br />
+                        服务邮箱：<%=p.mail %>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="dongtai" style="display:none">
+            	<div class="dongtai_title">红岭创投最新动态</div>
+                <div class="dongtai_con">
+                    <ul>
+                        <li><span>2015-5-17</span><a href="#">关于中午吃什么的讨论大会于15日上午召开</a></li>
+                        <li><span>2015-5-17</span><a href="#">关于中午吃什么的讨论大会于15日上午召开</a></li>
+                        <li><span>2015-5-17</span><a href="#">关于中午吃什么的讨论大会于15日上午召开</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    <% end %>
+    </div>
+    <%=render"/layouts/right"%>
+</div> 

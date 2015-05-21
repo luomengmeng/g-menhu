@@ -11,10 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150508071450) do
+ActiveRecord::Schema.define(version: 20150518060501) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "abroads", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string   "url"
+  end
 
   create_table "articles", force: :cascade do |t|
     t.string   "title"
@@ -27,6 +34,8 @@ ActiveRecord::Schema.define(version: 20150508071450) do
     t.string   "avatar"
     t.integer  "category_id"
     t.integer  "num"
+    t.string   "author"
+    t.string   "hot"
   end
 
   create_table "articles_tags", force: :cascade do |t|
@@ -48,6 +57,18 @@ ActiveRecord::Schema.define(version: 20150508071450) do
     t.integer  "reply_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+  end
+
+  create_table "investigates", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "lines", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "navigations", force: :cascade do |t|
@@ -80,6 +101,17 @@ ActiveRecord::Schema.define(version: 20150508071450) do
     t.string   "mail"
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
+    t.integer  "investigate_id"
+    t.integer  "line_id"
+    t.integer  "problem_id"
+    t.string   "hot"
+    t.string   "logo"
+  end
+
+  create_table "problems", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "provinces", force: :cascade do |t|
@@ -88,8 +120,23 @@ ActiveRecord::Schema.define(version: 20150508071450) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "stations", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string   "url"
+  end
+
   create_table "tags", force: :cascade do |t|
     t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "titles", force: :cascade do |t|
+    t.string   "name"
+    t.string   "name_url"
+    t.integer  "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

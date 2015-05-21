@@ -1,0 +1,33 @@
+<div class="main margin45">
+    <div class="width682">
+        <div><%=@tag_name.name%></div>
+        <% @articles_list.each do |a|%>
+        <div class="con-block">
+            <div class="block-left">
+                <a href='<%=frontend_article_path(a,:state=>"article")%>'>
+                <img src="<%=asset_url('f_01.png') %>">
+                </a>
+            </div>
+            <div class="block-right">
+                <div class="block-right-title"><%= link_to a.title , frontend_article_path(a,:state=>"article")%></div>
+                <div class="short-flag1"><a class="short-flag-blue"><%=@tag_name.name%></a><a class="short-flag-gray">47分钟前</a>
+                    <!-- <a class="short-flag-blue" href="#">事件</a> -->
+                </div>
+                <div class="short-flag2">
+                    <%  a.tags.each do |t| %>
+                    <a href='<%=frontend_article_path(t,:state=>"tag")%>'><%= t.name %></a>
+                    <% end %>
+                </div>
+                <div class="block-right-des"><%=a.abstact %></div>
+            </div>
+        </div>
+        <% end %>
+        <div class="pageinfo">
+            <%= will_paginate @articles_list %>
+<!--             <div class="pageinfo-left"><a href="#">>上一页</a></div>
+            <div class="pageinfo-right"><a href="#">下一页></a></div> -->
+        </div>
+    </div>
+    <%= render "/layouts/right"%>
+
+</div>        

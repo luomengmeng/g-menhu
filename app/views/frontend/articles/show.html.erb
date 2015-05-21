@@ -1,0 +1,17 @@
+
+<div class="main margin45">
+	<div class="width682">
+        <div><%=@name %></div>
+    	<div class="con-644">
+        	<div class="con-head-img"><img src="<%= @article.avatar.present? ? @article.avatar : asset_url('f_01.png')  %>" width="320" height="290"></div>
+            <div class="relation-info">
+            	<span><%=@article.author %></span>·&nbsp;&nbsp;<span><%=@article.created_at.strftime("%y %m %d %H:%M")%></span>
+            </div>
+            <h1><%=@article.title %></h1>
+            <div class="con-word">
+            	<p><%=@article.content %></p>
+            </div>
+        </div>
+    </div>
+    <%=render"/layouts/right"%>
+</div> 
