@@ -18,9 +18,46 @@ function setTab(name,cursel,n){
             <a href="#"><img src="<%=asset_url('icon_11.png') %>" /></a>
             <a class="hot" href="#"><img src="<%=asset_url('hot.png') %>" /></a>
         </div>
-        <div class="right-03">
-            <a href="#"><img src="<%=asset_url('k_02.png') %>" /></a>
+        <div class="right-02" id="tab1">
+            <div class="tab-02-title"><a href="javascript:void(0);" >专栏文章</a></div>
+             <div class="right2-titles">
+                <a id="one1" class="hover" onclick="setTab('one',1,2)">24小时</a>
+                <a id="one2" onclick="setTab('one',2,2)">周文章</a>
+               
+            </div>
+            <div class="right2content-tab">
+                <div class="kuaixun" id="con_one_1">
+                    <ul>
+                        <%
+                            columns = Column.order(created_at: :asc)
+                            zl = columns.limit(4).offset(1)
+                            yz = columns.limit(4).offset(5)
+                            zl.each do |c|
+                        %>
+                        <li>
+                            <!-- <a href="#"><img src="images/k_01.png" /></a> -->
+                        <span><%= link_to c.title , frontend_column_path(c,:state=>"columns")%></span>
+                        </li>
+                        <% end %>
+                    </ul>
+                </div>
+                <style>
+                    #con_one_2 li {float: left; list-style: none;   border-bottom: 1px solid #d2d2d2; width: 100%; padding: 12px 0px;}
+                    #con_one_2 li span a{font-size: 18px; font-family: 微软雅黑; color: #394045; padding: 0px 12px; display: block;  overflow: hidden;}
+                </style>
+                <div id="con_one_2" style="display:none;">
+                    <% yz.each do |y| %>
+                        <li>
+                            <!-- <a href="#"><img src="images/k_01.png" /></a> -->
+                        <span><%= link_to y.title , frontend_column_path(y,:state=>"columns")%></span>
+                        </li>
+                    <% end %>
+                </div>
+            </div>
         </div>
+<!--         <div class="right-03">
+            <a href="#"><img src="<%=asset_url('k_02.png') %>" /></a>
+        </div> -->
         
         <div class="right-04">
             <div class="tab-02-title"><a href="#" >行业服务</a></div>

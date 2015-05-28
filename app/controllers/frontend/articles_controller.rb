@@ -13,9 +13,12 @@ class Frontend::ArticlesController < ApplicationController
       @name = Category.find(params_id).name
       render "list"
     elsif params_state == "tag"
-      @articles_list  = Article.joins(:tags).where("tags.id = ?",params['id']).order("created_at desc").paginate(page:params[:page],per_page:5) 
+      @articles_list  = Article.joins(:tags).where("tags.id = ?",params_id).order("created_at desc").paginate(page:params[:page],per_page:5) 
       @name = Tag.find(params['id']).name
       render "list"
+    elsif params_state == "columns"
+      @articles_list  = Column.where("id = ?" , params_id).order("created_at desc")
+      render "columns"
     else
       @article = Article.find(params_id)
       render "show"

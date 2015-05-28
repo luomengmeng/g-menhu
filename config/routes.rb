@@ -4,7 +4,7 @@ Rails.application.routes.draw do
     root 'frontend/home#index'
     # root 'frontend/article#show'
     namespace :frontend do
-        resources :articles, :news, :navigations
+        resources :articles, :news, :navigations, :columns
     end
 
     namespace :backend do

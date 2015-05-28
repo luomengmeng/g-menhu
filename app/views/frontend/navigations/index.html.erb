@@ -149,7 +149,7 @@ function setTab(name,cursel,n){
                       success: function (obj) {
                             $(".area").text("");
                             $(obj).each(function(index,item){
-                                $(".area").append("<div class='area-bj'><span class='area-title' style='margin-left:0px;color:#3A93F7;''>"+item.provinces_name+"（2）</span><div class='area-bj-con'><a href='/frontend/navigations/"+item.id+"'>"+item.navigations_name+"</a></div></div>");
+                                $(".area").append("<div class='area-bj'><span class='area-title' style='margin-left:0px;color:#3A93F7;''>"+item.provinces_name+"</span><div class='area-bj-con'><a href='/frontend/navigations/"+item.id+"'>"+item.navigations_name+"</a></div></div>");
                             });
                       }
                     });

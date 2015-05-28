@@ -11,5 +11,7 @@ provinces.each do |p|
   Province.create(name: "#{p}")
 end
 
+User.create(nickname: "superman" , name: "luomeng" , status: "1" , account_type: "2" , password: "admin123456")
+
 
 

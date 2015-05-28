@@ -28,7 +28,8 @@ class Frontend::NavigationsController < ApplicationController
     params_state = params[:state]
       if params_state== "investigates"
         data = Navigation.select("navigations.*,navigations.name as navigations_name, provinces.id as pro_id , provinces.name as provinces_name").joins(:province).where("investigate_id = ?", params_id).order("navigations.created_at desc").group("provinces.id,navigations.id")
-        # data = Province.order("created_at asc").all
+        # data = Navigation.joins(:province, :investigate).where("investigate_id = ?", params_id).order("created_at asc").all
+        # data = Navigation.joins(:province , :investigate).where("investigates.id = ?" , params_id).order("created_at desc").group("provinces.id,navigations.id")
 
       elsif params_state== "lines"
         data = Navigation.select("navigations.*,navigations.name as navigations_name, provinces.id as pro_id , provinces.name as provinces_name").joins(:province).where("online_time = ?", params_id).order("navigations.created_at desc").group("provinces.id,navigations.id")
