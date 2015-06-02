@@ -5,7 +5,7 @@
             </div>
             <h1><%=@column.title %></h1>
             <div class="con-word">
-            	<p><%=@column.content %></p>
+            	<p><%=@column.content.gsub(/<\/?.*?>/,"") %></p>
             </div>
         </div>
     </div>

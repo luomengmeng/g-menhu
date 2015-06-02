@@ -27,19 +27,16 @@ class Frontend::NavigationsController < ApplicationController
     params_id = params[:id]
     params_state = params[:state]
       if params_state== "investigates"
-        data = Navigation.select("navigations.*,navigations.name as navigations_name, provinces.id as pro_id , provinces.name as provinces_name").joins(:province).where("investigate_id = ?", params_id).order("navigations.created_at desc").group("provinces.id,navigations.id")
-        # data = Navigation.joins(:province, :investigate).where("investigate_id = ?", params_id).order("created_at asc").all
-        # data = Navigation.joins(:province , :investigate).where("investigates.id = ?" , params_id).order("created_at desc").group("provinces.id,navigations.id")
-
+        data = Navigation.includes(:province).where("investigate_id = ?", params_id).order("navigations.created_at desc")
+        @navigations = data.group_by{|nav| nav.province.name}
       elsif params_state== "lines"
-        data = Navigation.select("navigations.*,navigations.name as navigations_name, provinces.id as pro_id , provinces.name as provinces_name").joins(:province).where("online_time = ?", params_id).order("navigations.created_at desc").group("provinces.id,navigations.id")
+        data = Navigation.includes(:line).where("online_time = ?", params_id).order("navigations.created_at desc")
+        @navigations = data.group_by{|nav| nav.province.name}
       elsif params_state== "problems"
-        data = Navigation.select("navigations.*,navigations.name as navigations_name, provinces.id as pro_id , provinces.name as provinces_name").joins(:province).where("problem_id = ?", params_id).order("navigations.created_at desc").group("provinces.id,navigations.id")
+        data = Navigation.includes(:province).where("problem_id = ?", params_id).order("navigations.created_at desc")
+        @navigations = data.group_by{|nav| nav.province.name}
       end
-      render json: data
-#position: absolute;
-
-
+      render layout: false
   end
 
 
