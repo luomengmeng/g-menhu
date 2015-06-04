@@ -206,7 +206,7 @@ font-weight: 600;font-size: 18px;}
 /*----------------------平台活动--------------------------------*/
 .pingtai-activity{ width:302px; height:340px; float:right;}
 .right6-titles{ width:180px; height:35px; float:left;}
-.right6-titles a{ display:block; float:left; padding:0px 57px;font-family:微软雅黑; font-size:16px; color:#929292; text-align:center; line-height:35px; border:1px solid #c5c5c5;}
+.right6-titles a{ display:block; float:left; padding:0px 52px;font-family:微软雅黑; font-size:16px; color:#929292; text-align:center; line-height:35px; border:1px solid #c5c5c5;}
 .right6-titles a.hover{ border-bottom:2px solid #ff6766;color:#394045;}
 .right6content-tab{width:100%; height:285px; float:left; margin-top:20px; }
 .activity{ width:100%; height:285px; float:left;}

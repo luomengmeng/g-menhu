@@ -3,11 +3,10 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
   
-# ##定时任务  # 每天6点执行一次
-# require 'rufus-scheduler'
-# scheduler = Rufus::Scheduler.new
-# scheduler.cron '0 6 * * *' do
-
+##定时任务  # 每天6点执行一次
+require 'rufus-scheduler'
+scheduler = Rufus::Scheduler.new
+scheduler.cron '0 6 * * *' do
 ##数据抓取
     require 'nokogiri'  
     require 'open-uri' 
@@ -17,7 +16,7 @@ class ApplicationController < ActionController::Base
         a_title = link.text
         a_href = link['href']
         if i <= 10
-            column = Column.first
+            column = Column.where("id = ?" , i)
             contents = Nokogiri::HTML(open(a_href, 'User-Agent' => 'firefox'))
             content = contents.css(".aritcle_txt")
             if column.present?
@@ -27,14 +26,16 @@ class ApplicationController < ActionController::Base
                 data.content = content
                 data.save
             else
-                columns = Column.create(title: a_title, url: a_href ,status: 1)
+                columns = Column.create(title: a_title, url: a_href ,content: content ,status: 1)
             end
         end
         i += 1
     end  
 
-# end
+end
 # scheduler.join   #die
+
+
 
 ##批量删除
 # for value in 136..155
